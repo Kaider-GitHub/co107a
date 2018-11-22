@@ -14,11 +14,11 @@ CHIP FullAdder {
 
     PARTS:
     
-    And(a=a, b=b, out=outa);
-    And(b=b, c=c, out=outb);
-    And(c=c, a=a, out=outc);
-    Or(a=outa, b=outb, out=oroutab);
-    Or(a=outc, b=oroutab, out=carry);
+    And(a=a, b=b, out=outab);
+    And(a=b, b=c, out=outbc);
+    And(a=c, b=a, out=outca);
+    Or(a=outab, b=outbc, out=orout);
+    Or(a=outca, b=orout, out=carry);
     
     Not(in=a, out=nota);
     Not(in=b, out=notb);
@@ -26,12 +26,12 @@ CHIP FullAdder {
     
     And(a=nota, b=notb, out=sum00);
     And(a=sum00, b=c, out=sum01);
-    And(a=a, b=notb, out=sum10);
+    And(a=nota, b=b, out=sum10);
     And(a=sum10, b=notc, out=sum11);
     And(a=a, b=b, out=sum20);
     And(a=sum20, b=c, out=sum21);
-    And(a=nota, b=b, out=sum30);
-    And(a=sum30, b=c, out=sum31);
+    And(a=a, b=notb, out=sum30);
+    And(a=sum30, b=notc, out=sum31);
     Or(a=sum01, b=sum11, out=sums0);
     Or(a=sums0, b=sum21, out=sums1);
     Or(a=sums1, b=sum31, out=sum);
