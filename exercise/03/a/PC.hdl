@@ -25,4 +25,3 @@ CHIP PC {
     Register(in=toload, load=loadflag, out=regout);
 	Or16(a=regout, b=regout, out=out);
 }
-}
